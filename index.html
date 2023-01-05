@@ -1,1 +1,378 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><title>Bonjour!</title><link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet"><style>:root{--shadow-color:rgba(0, 0, 0, 0.5);--gray-500:#6b7280;--text-yellow:rgb(231, 246, 26);--text-green:#6ee7b7}body,html,main{margin:0;padding:0;width:100%;height:100%}*{box-sizing:border-box;font-family:Fira Code;-webkit-font-smoothing:antialiased}body{background-color:var(--gray-500)}.medium{font-weight:500}.bold{font-weight:700}a,a:visited{color:var(--text-green)}input{background-color:rgba(0,0,0,0);border:0;box-shadow:none;color:#fff;font-size:1.2rem;text-decoration:none}input:focus{border:none;outline:0}main{display:flex;align-items:center;justify-content:center;padding:2.5rem;overflow:hidden}.titlebar{display:flex;align-items:center;justify-content:space-between;font-size:1.2rem;padding:0 1rem;color:#f0f0f0;background-color:#1e293b;flex-basis:5%}.titleText{padding-left:4rem}.button-container{display:grid;grid-template-columns:auto auto auto;align-items:center;justify-content:center;gap:1.5rem}.btn-minimize{width:.55rem;height:.55rem;border-bottom:.15rem solid #f0f0f0}.btn-maximize{border:.15rem solid #f0f0f0;width:.55rem;height:.55rem}.btn-close{display:flex;align-items:center;justify-content:center;font-size:.9rem;background-color:#d45b0b;border-radius:50%;width:1.25rem;height:1.25rem}.terminal{display:flex;flex-direction:column;width:100%;height:100%;background-color:#111827;color:#fff;border-radius:.25rem;box-shadow:-1px 2px 5px 1px var(--shadow-color)}.terminal-content{display:flex;overflow:auto;flex-basis:95%;font-size:1.2rem;padding:.6rem;flex-direction:column}.terminal-content>p{margin:.5rem 1.3rem}.terminal-content div{padding:.5rem 0}.command-list-container{padding:1rem 1.2rem!important}.command-line{width:70%}.contact-info{display:flex;flex-wrap:wrap;gap:1.5rem}.about>span{color:var(--text-green)}.highlight{color:var(--text-green)}::-webkit-scrollbar{width:.5rem}::-webkit-scrollbar-track{display:none}::-webkit-scrollbar-thumb{background-color:#efefef}.project-info{padding:0 2rem}@media screen and (max-width:600px){.titleText{padding-left:2rem}.terminal-content,.titlebar,input{font-size:.9rem}.btn-close{font-size:.7rem;width:1rem;height:1rem}.btn-maximize,.btn-minimize{width:.5rem;height:.5rem}}</style></head><body><main><div class="terminal"><div class="titlebar bold"><span>+</span> <span class="titleText">adit@adit</span><div class="button-container"><div class="btn-minimize"></div><div class="btn-maximize"></div><div class="btn-close medium">&#x2715;</div></div></div><div class="terminal-content"><div><span class="medium">> </span><span class="console"></span></div></div></div></main></body><script type="text/javascript">function echoListOfCommands() { terminal.appendChild(createElement("p", "List of available commands:")); const e = createElement("div"); e.setAttribute("class", "command-list-container"), Object.keys(commandObject).forEach(t => { const a = createElement("section"), n = createElement("span", `${t}: `, TEXT_GREEN), o = createElement("span", commandObject[t].desc); a.appendChild(n), a.appendChild(o), e.appendChild(a) }), terminal.appendChild(e) } const terminal = document.querySelector(".terminal-content"), createElement = (e, t, a) => { const n = document.createElement(e); return n.textContent = t, n.style.color = a, n }, clearTerminal = () => { terminal.querySelectorAll("div").forEach(e => e.remove()), terminal.querySelectorAll("p").forEach(e => e.remove()), terminal.querySelectorAll("span").forEach(e => e.remove()) }, aboutMe = () => { const e = ["<span>Software Engineer.</span> Fond of <span>JavaScript</span> and <span>Linux</span>.", "<span>Football</span> enthusiast... <span>Real Madrid</span> & <span>Chelsea</span> ftw.", "As of now, I am a <span>graduate student</span> and a part-time <span>software engineer</span> at <span>University of Texas Dallas</span>."]; for (const t of e) { const e = document.createElement("p"); e.setAttribute("class", "about"), e.innerHTML = t, terminal.append(e) } }, contactInfo = () => { const e = [{ name: "aditshah8@gmail.com", url: "mailto:aditshah8@gmail.com" }, { name: "Github", url: "https://github.com/ohoadit" }, { name: "Telegram", url: "https://t.me/feedbackloop8" }, { name: "Twitter", url: "https://twitter.com/ohoaditt" }, { name: "Linkedin", url: "https://www.linkedin.com/in/ohoadit/" }], t = createElement("p"); t.setAttribute("class", "contact-info"); for (const a of e) { const e = createElement("a", a.name); e.href = a.url, e.target = "_blank", t.appendChild(e) } terminal.appendChild(t) }, renderProjects = () => { const e = [{ title: "Hashync", desc: "A password manager built on top of custom hashing mechanism which ensures that the original password never leaves the device.", stack: "React Native, Node.js, MongoDB", link: "https://github.com/ohoadit/hashync" }, { title: "Dineat", desc: "A restaurant table reservation web app with modern features like voice-assistance and QR check-in.", stack: "Vue, Node.js, PostgreSQL", link: "https://dineat.herokuapp.com" }, { title: "Email classifier", desc: "Developed, trained and deployed a custom ML model of multinomial naive bayes algorithm with 96.4% accuracy in classifying spam and ham email.", stack: "Python, Streamlit", link: "https://mnaivebayes.herokuapp.com" }, { title: "Adjudge", desc: "A web app to manage the ratings given by the students to their faculties.", stack: "React, Node.js, PostgreSQL", link: "https://github.com/ohoadit/adjudge" }], t = createElement("div"); t.setAttribute("class", "projects"); for (const t of e) { const e = createElement("p"); e.innerHTML = `<span>${t.title}</span>:  <a href=${t.link} target='_blank'>Link</a>`, e.setAttribute("class", "highlight"); const a = createElement("p", t.desc); a.setAttribute("class", "project-info"); const n = createElement("p", `Stack: ${t.stack}`); n.setAttribute("class", "project-info"), n.innerHTML = `<span class='highlight'>Stack:</span> ${t.stack}`, terminal.appendChild(e), terminal.appendChild(a), terminal.appendChild(n) } }, downloadResume = () => { const e = createElement("a"); e.setAttribute("href", "resume.pdf"), e.setAttribute("download", "Resume.Adit.pdf"), document.body.appendChild(e), e.click(), e.remove() }, commandObject = { whoami: { desc: "About me and my current status", renderFunction: aboutMe }, projects: { desc: "My academic and personal projects", renderFunction: renderProjects }, "contact me": { desc: "Contact information", renderFunction: contactInfo }, "wget resume": { desc: "Download resume", renderFunction: downloadResume }, clear: { desc: "Clear the terminal window", renderFunction: clearTerminal }, "ls -l": { desc: "To list all the available commands", renderFunction: echoListOfCommands } }, TEXT_GREEN = "var(--text-green)", hold = (e = 20) => new Promise((t, a) => setTimeout(t, e)), createCaratSpan = () => createElement("span", "> "), echoGreetingMessage = () => { const e = "Server started successfully..."; terminal.appendChild(createElement("p", e, TEXT_GREEN)), terminal.appendChild(createElement("p", "Welcome to my portfolio!")) }, getEmptyCommandLine = () => { const e = createElement("div"), t = createCaratSpan(); t.setAttribute("class", "medium"); const a = document.createElement("input"); a.setAttribute("spellcheck", "false"), a.setAttribute("class", "command-line"), e.appendChild(t), e.appendChild(a), terminal.appendChild(e), a.focus() }; (() => { const e = "cd adit && npm run prod"; let t = 0; const a = setInterval(async () => { document.querySelector(".console").textContent += e[t++], t == e.length && (clearInterval(a), await hold(500), echoGreetingMessage(), await hold(100), echoListOfCommands(), getEmptyCommandLine()) }, 70) })(), document.addEventListener("keydown", async e => { "Enter" === e.key && await executeCommand() }); const replaceCommandLine = e => { document.querySelector(".command-line").replaceWith(createElement("span", e)) }, executeCommand = async () => { const e = document.querySelector(".command-line"), t = e.value; commandObject[t] ? (replaceCommandLine(t), await hold(50), commandObject[t].renderFunction(), getEmptyCommandLine()) : e.value = "" };</script></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>Bonjour!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --shadow-color: rgba(0, 0, 0, 0.5);
+            --gray-500: #6b7280;
+            --text-yellow: rgb(231, 246, 26);
+            --text-green: #6ee7b7
+        }
+
+        body,
+        html,
+        main {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: Fira Code;
+            -webkit-font-smoothing: antialiased
+        }
+
+        body {
+            background-color: var(--gray-500)
+        }
+
+        .medium {
+            font-weight: 500
+        }
+
+        .bold {
+            font-weight: 700
+        }
+
+        a,
+        a:visited {
+            color: var(--text-green)
+        }
+
+        input {
+            background-color: rgba(0, 0, 0, 0);
+            border: 0;
+            box-shadow: none;
+            color: #fff;
+            font-size: 1.2rem;
+            text-decoration: none
+        }
+
+        input:focus {
+            border: none;
+            outline: 0
+        }
+
+        main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2.5rem;
+            overflow: hidden
+        }
+
+        .titlebar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            padding: 0 1rem;
+            color: #f0f0f0;
+            background-color: #1e293b;
+            flex-basis: 5%
+        }
+
+        .titleText {
+            padding-left: 4rem
+        }
+
+        .button-container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem
+        }
+
+        .btn-minimize {
+            width: .55rem;
+            height: .55rem;
+            border-bottom: .15rem solid #f0f0f0
+        }
+
+        .btn-maximize {
+            border: .15rem solid #f0f0f0;
+            width: .55rem;
+            height: .55rem
+        }
+
+        .btn-close {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .9rem;
+            background-color: #d45b0b;
+            border-radius: 50%;
+            width: 1.25rem;
+            height: 1.25rem
+        }
+
+        .terminal {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            background-color: #111827;
+            color: #fff;
+            border-radius: .25rem;
+            box-shadow: -1px 2px 5px 1px var(--shadow-color)
+        }
+
+        .terminal-content {
+            display: flex;
+            overflow: auto;
+            flex-basis: 95%;
+            font-size: 1.2rem;
+            padding: .6rem;
+            flex-direction: column
+        }
+
+        .terminal-content>p {
+            margin: .5rem 1.3rem
+        }
+
+        .terminal-content div {
+            padding: .5rem 0
+        }
+
+        .command-list-container {
+            padding: 1rem 1.2rem !important
+        }
+
+        .command-line {
+            width: 70%
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem
+        }
+
+        .about>span {
+            color: var(--text-green)
+        }
+
+        .highlight {
+            color: var(--text-green)
+        }
+
+        ::-webkit-scrollbar {
+            width: .5rem
+        }
+
+        ::-webkit-scrollbar-track {
+            display: none
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #efefef
+        }
+
+        .project-info {
+            padding: 0 2rem
+        }
+
+        @media screen and (max-width:600px) {
+            .titleText {
+                padding-left: 2rem
+            }
+
+            .terminal-content,
+            .titlebar,
+            input {
+                font-size: .9rem
+            }
+
+            .btn-close {
+                font-size: .7rem;
+                width: 1rem;
+                height: 1rem
+            }
+
+            .btn-maximize,
+            .btn-minimize {
+                width: .5rem;
+                height: .5rem
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="terminal">
+            <div class="titlebar bold"><span>+</span> <span class="titleText">adit@adit</span>
+                <div class="button-container">
+                    <div class="btn-minimize"></div>
+                    <div class="btn-maximize"></div>
+                    <div class="btn-close medium">&#x2715;</div>
+                </div>
+            </div>
+            <div class="terminal-content">
+                <div><span class="medium">> </span><span class="console"></span></div>
+            </div>
+        </div>
+    </main>
+</body>
+<script type="text/javascript">
+    function echoListOfCommands() {
+        terminal.appendChild(createElement("p", "List of available commands:"));
+        const e = createElement("div");
+        e.setAttribute("class", "command-list-container"), Object.keys(commandObject).forEach(t => {
+            const a = createElement("section"),
+                n = createElement("span", `${t}: `, TEXT_GREEN),
+                o = createElement("span", commandObject[t].desc);
+            a.appendChild(n), a.appendChild(o), e.appendChild(a)
+        }), terminal.appendChild(e)
+    }
+    const terminal = document.querySelector(".terminal-content"),
+        createElement = (e, t, a) => {
+            const n = document.createElement(e);
+            return n.textContent = t, n.style.color = a, n
+        },
+        clearTerminal = () => {
+            terminal.querySelectorAll("div").forEach(e => e.remove()), terminal.querySelectorAll("p").forEach(e => e.remove()), terminal.querySelectorAll("span").forEach(e => e.remove())
+        },
+        aboutMe = () => {
+            const e = ["<span>Software Engineer. </span> I ❤️ <span>JavaScript</span> and <span>Linux</span>.", "I'd chase and click the best <span>🌅</span> and <span>🌇</span>.", "Currently, I'm a <span>graduate student</span> at <span>UT Dallas</span>."];
+            for (const t of e) {
+                const e = document.createElement("p");
+                e.setAttribute("class", "about"), e.innerHTML = t, terminal.append(e)
+            }
+        },
+        contactInfo = () => {
+            const e = [{
+                name: "aditshah8@gmail.com",
+                url: "mailto:aditshah8@gmail.com"
+            }, {
+                name: "Github",
+                url: "https://github.com/ohoadit"
+            }, {
+                name: "Telegram",
+                url: "https://t.me/ohoadit"
+            }, {
+                name: "Twitter",
+                url: "https://twitter.com/ohoaditt"
+            }, {
+                name: "Linkedin",
+                url: "https://www.linkedin.com/in/ohoadit/"
+            }],
+                t = createElement("p");
+            t.setAttribute("class", "contact-info");
+            for (const a of e) {
+                const e = createElement("a", a.name);
+                e.href = a.url, e.target = "_blank", t.appendChild(e)
+            }
+            terminal.appendChild(t)
+        },
+        renderProjects = () => {
+            const e = [{
+                title: "Live tweet polarizer",
+                desc: "An application to do live twitter sentiment analysis based on a search term.",
+                stack: "Python, Kafka, Logstash, Elasticsearch, Kibana",
+                link: "https://github.com/ohoadit/tweet-polarizer"
+            }, {
+                title: "Hashync",
+                desc: "A password manager built on top of custom hashing mechanism which ensures that the original password never leaves the device.",
+                stack: "React Native, Node.js, MongoDB",
+                link: "https://github.com/ohoadit/hashync"
+            }, {
+                title: "Dineat",
+                desc: "A restaurant table reservation web app with built-in features like voice-assistance and QR check-in.",
+                stack: "Vue, Node.js, PostgreSQL",
+                link: "https://dineat.alwaysdata.net"
+            }, {
+                title: "Email classifier",
+                desc: "Developed, trained and deployed a custom ML model of multinomial naive bayes algorithm with 96.4% accuracy in classifying spam and ham email.",
+                stack: "Python, Streamlit",
+                link: "https://mnaivebayes.herokuapp.com"
+            }, {
+                title: "Adjudge",
+                desc: "A web app to aggregate the ratings given by the students to their faculties.",
+                stack: "React, Node.js, PostgreSQL",
+                link: "https://github.com/ohoadit/adjudge"
+            }],
+                t = createElement("div");
+            t.setAttribute("class", "projects");
+            for (const t of e) {
+                const e = createElement("p");
+                e.innerHTML = `<span>${t.title}</span>:  <a href=${t.link} target='_blank'>Link</a>`, e.setAttribute("class", "highlight");
+                const a = createElement("p", t.desc);
+                a.setAttribute("class", "project-info");
+                const n = createElement("p", `Stack: ${t.stack}`);
+                n.setAttribute("class", "project-info"), n.innerHTML = `<span class='highlight'>Stack:</span> ${t.stack}`, terminal.appendChild(e), terminal.appendChild(a), terminal.appendChild(n)
+            }
+        },
+        downloadResume = () => {
+            const e = createElement("a");
+            e.setAttribute("href", "resume.pdf"), e.setAttribute("download", "Resume.Adit.pdf"), document.body.appendChild(e), e.click(), e.remove()
+        },
+        commandObject = {
+            whoami: {
+                desc: "About me and my current status",
+                renderFunction: aboutMe
+            },
+            projects: {
+                desc: "Some cool stuff I developed",
+                renderFunction: renderProjects
+            },
+            "contact me": {
+                desc: "Contact information",
+                renderFunction: contactInfo
+            },
+            "wget resume": {
+                desc: "Download resume",
+                renderFunction: downloadResume
+            },
+            clear: {
+                desc: "Clear the terminal window",
+                renderFunction: clearTerminal
+            },
+            "ls -l": {
+                desc: "To list all the available commands",
+                renderFunction: echoListOfCommands
+            }
+        },
+        TEXT_GREEN = "var(--text-green)",
+        hold = (e = 20) => new Promise((t, a) => setTimeout(t, e)),
+        createCaratSpan = () => createElement("span", "> "),
+        echoGreetingMessage = () => {
+            const e = "Server up and running...";
+            terminal.appendChild(createElement("p", e, TEXT_GREEN)), terminal.appendChild(createElement("p", "Welcome to my portfolio!"))
+        },
+        getEmptyCommandLine = () => {
+            const e = createElement("div"),
+                t = createCaratSpan();
+            t.setAttribute("class", "medium");
+            const a = document.createElement("input");
+            a.setAttribute("spellcheck", "false"), a.setAttribute("class", "command-line"), e.appendChild(t), e.appendChild(a), terminal.appendChild(e), a.focus()
+        };
+    (() => {
+        const e = "cd adit && npm run prod";
+        let t = 0;
+        const a = setInterval(async () => {
+            document.querySelector(".console").textContent += e[t++], t == e.length && (clearInterval(a), await hold(500), echoGreetingMessage(), await hold(100), echoListOfCommands(), getEmptyCommandLine())
+        }, 70)
+    })(), document.addEventListener("keydown", async e => {
+        "Enter" === e.key && await executeCommand()
+    });
+    const replaceCommandLine = e => {
+        document.querySelector(".command-line").replaceWith(createElement("span", e))
+    },
+        executeCommand = async () => {
+            const e = document.querySelector(".command-line"),
+                t = e.value;
+            commandObject[t] ? (replaceCommandLine(t), await hold(50), commandObject[t].renderFunction(), getEmptyCommandLine()) : e.value = ""
+        };
+</script>
+
+</html>
