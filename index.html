@@ -225,7 +225,7 @@
 </body>
 <script type="text/javascript">
     function echoListOfCommands() {
-        terminal.appendChild(createElement("p", "List of available commands:"));
+        terminal.appendChild(createElement("p", "Supported commands:"));
         const e = createElement("div");
         e.setAttribute("class", "command-list-container"), Object.keys(commandObject).forEach(t => {
             const a = createElement("section"),
@@ -347,7 +347,7 @@
         createCaratSpan = () => createElement("span", "> "),
         echoGreetingMessage = () => {
             const e = "Server up and running...";
-            terminal.appendChild(createElement("p", e, TEXT_GREEN)), terminal.appendChild(createElement("p", "Welcome to my portfolio!"))
+            terminal.appendChild(createElement("p", e, TEXT_GREEN)), terminal.appendChild(createElement("p", "Welcome to my portfolio! You can click or type the commands :)"))
         },
         getEmptyCommandLine = () => {
             const e = createElement("div"),
