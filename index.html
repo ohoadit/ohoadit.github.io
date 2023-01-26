@@ -46,7 +46,7 @@
         a:visited {
             color: var(--text-green)
         }
-
+ 
         input {
             background-color: rgba(0, 0, 0, 0);
             border: 0;
@@ -229,7 +229,7 @@
         const e = createElement("div");
         e.setAttribute("class", "command-list-container"), Object.keys(commandObject).forEach(t => {
             const a = createElement("section"),
-                n = createElement("span", `${t}: `, TEXT_GREEN),
+                n = createElementWithHTMLContent("span", `<u>${t}</u>: `, TEXT_GREEN),
                 o = createElement("span", commandObject[t].desc);
             a.appendChild(n), a.appendChild(o), e.appendChild(a)
         }), terminal.appendChild(e)
@@ -238,6 +238,10 @@
         createElement = (e, t, a) => {
             const n = document.createElement(e);
             return n.textContent = t, n.style.color = a, n
+        },
+        createElementWithHTMLContent = (e, t, a) => {
+            const n = document.createElement(e);
+            return n.innerHTML = t, n.style.color = a, n
         },
         clearTerminal = () => {
             terminal.querySelectorAll("div").forEach(e => e.remove()), terminal.querySelectorAll("p").forEach(e => e.remove()), terminal.querySelectorAll("span").forEach(e => e.remove())
@@ -318,7 +322,7 @@
         },
         commandObject = {
             whoami: {
-                desc: "About me and my current status",
+                desc: "About me",
                 renderFunction: aboutMe
             },
             projects: {
